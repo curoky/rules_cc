@@ -10,12 +10,15 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "config",
-    hdrs = [
-        "config.h",
-        "event-config.h",
-    ],
-    includes = [
-        ".",
-    ],
+    hdrs = ["event-config.h"],
+    include_prefix = "event2",
+    includes = ["."],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "config-private",
+    hdrs = ["evconfig-private.h"],
+    includes = ["."],
     visibility = ["//visibility:public"],
 )
