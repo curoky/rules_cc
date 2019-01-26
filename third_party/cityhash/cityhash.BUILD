@@ -6,5 +6,5 @@ cc_library(
     hdrs = glob(["src/*.h"]),
     includes = ["src/"],
     visibility = ["//visibility:public"],
-    deps = ["@//third_party/cityhash/extra:config"],
+    deps = ["@rules_3rd//third_party/cityhash/extra:config"],
 )

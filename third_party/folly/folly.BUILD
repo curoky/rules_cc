@@ -23,7 +23,6 @@ cc_library(
     linkopts = ["-ldl"],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/folly:config",
         "@boost//:algorithm",
         "@boost//:container",
         "@boost//:context",

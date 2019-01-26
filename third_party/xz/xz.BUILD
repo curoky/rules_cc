@@ -30,5 +30,5 @@ cc_library(
     # ],
     linkstatic = 1,
     visibility = ["//visibility:public"],
-    deps = ["@//third_party/xz/extra:config"],
+    deps = ["@rules_3rd//third_party/xz/extra:config"],
 )

@@ -22,8 +22,5 @@ cc_library(
     hdrs = glob(["include/**/*.h"]) + [":version_h"],
     includes = ["include"],
     visibility = ["//visibility:public"],
-    deps = [
-        "@//third_party/restclient/extra:version",
-        "@com_github_curl//:curl",
-    ],
+    deps = ["@com_github_curl//:curl"],
 )

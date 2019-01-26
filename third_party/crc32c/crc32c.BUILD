@@ -17,5 +17,5 @@ cc_library(
     copts = ["-Isrc"],
     includes = ["include"],
     visibility = ["//visibility:public"],
-    deps = ["@//third_party/crc32c/extra:config"],
+    deps = ["@rules_3rd//third_party/crc32c/extra:config"],
 )

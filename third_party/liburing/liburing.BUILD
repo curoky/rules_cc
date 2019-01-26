@@ -17,5 +17,5 @@ cc_library(
     includes = ["src/include"],
     linkstatic = 1,
     visibility = ["//visibility:public"],
-    deps = ["@//third_party/liburing/extra:compat"],
+    deps = ["@rules_3rd//third_party/liburing/extra:compat"],
 )
