@@ -52,6 +52,7 @@ def load_all_repo():
     new_github_repo("com_github_facebook_folly", "facebook/folly")
     new_github_repo("com_github_facebook_proxygen", "facebook/proxygen", branch = "v2020.10.19.00")
     new_github_repo("com_github_facebook_wangle", "facebook/wangle", branch = "v2020.10.19.00")
+    new_github_repo("com_github_facebook_zstd", "facebook/zstd")
     new_github_repo("com_github_facebookincubator_fizz", "facebookincubator/fizz", branch = "v2020.10.19.00")
     new_github_repo("com_github_fmtlib_fmt", "fmtlib/fmt", path = "fmtlib/fmt")
     new_github_repo("com_github_gabime_spdlog", "gabime/spdlog", branch = "v1.x")
@@ -130,18 +131,18 @@ def load_all_repo():
         url = "https://tukaani.org/xz/xz-5.2.5.tar.gz",
     )
 
-    http_archive(
-        name = "com_github_facebook_zstd",
-        build_file = "@rules_3rd//:third_party/zstd/zstd.BUILD",
-        sha256 = "188ba167e7a507b545c5f455af4afe3a34b2cee5551949fa000a8218ff4fda67",
-        strip_prefix = "zstd-bd2740f3476c46b9f69d59e49e7391c2762e04b3",
-        urls = ["https://github.com/facebook/zstd/archive/bd2740f3476c46b9f69d59e49e7391c2762e04b3.tar.gz"],
-    )
+    # http_archive(
+    #     name = "com_github_facebook_zstd",
+    #     build_file = "@rules_3rd//:third_party/zstd/zstd.BUILD",
+    #     sha256 = "188ba167e7a507b545c5f455af4afe3a34b2cee5551949fa000a8218ff4fda67",
+    #     strip_prefix = "zstd-bd2740f3476c46b9f69d59e49e7391c2762e04b3",
+    #     urls = ["https://github.com/facebook/zstd/archive/bd2740f3476c46b9f69d59e49e7391c2762e04b3.tar.gz"],
+    # )
 
     new_git_repository(
         name = "com_github_libevent_libevent",
         branch = "5df3037d10556bfcb675bc73e516978b75fc7bc7",  # release-2.1.12-stable
-        build_file = "@rules_3rd//:third_party/libevent/libevent.BUILD",
+        build_file = "@com_curoky_rules_cc//:third_party/libevent/libevent.BUILD",
         remote = "https://github.com/libevent/libevent",
     )
 
