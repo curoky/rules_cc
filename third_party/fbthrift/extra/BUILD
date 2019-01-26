@@ -14,16 +14,13 @@ cc_library(
     ]),
     copts = [
         "-std=c++17",
-        "-Iexternal/com_github_google_double_conversion",
     ],
     include_prefix = "thrift/lib/thrift",
-    # includes = ["."],
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebook_fbthrift//:gen",
         "@com_github_facebook_fbthrift//:thrift-core",
         "@com_github_facebook_folly//:folly",
-        "@com_github_google_double_conversion//:double-conversion",
     ],
 )
 
@@ -38,16 +35,11 @@ cc_library(
     ]),
     copts = [
         "-std=c++17",
-        "-Iexternal/com_github_google_double_conversion",
     ],
     include_prefix = "thrift/lib/thrift",
-    # includes = ["."],
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebook_fbthrift//:gen",
-        # "@com_github_facebook_fbthrift//:thrift-core",
-        # "@com_github_facebook_folly//:folly",
-        "@com_github_google_double_conversion//:double-conversion",
     ],
 )
 
@@ -62,7 +54,6 @@ cc_library(
     ]),
     copts = [
         "-std=c++17",
-        "-Iexternal/com_github_google_double_conversion",
     ],
     include_prefix = "thrift/lib/thrift",
     # includes = ["."],
@@ -70,8 +61,5 @@ cc_library(
     deps = [
         "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@com_github_facebook_fbthrift//:gen",
-        # "@com_github_facebook_fbthrift//:thrift-core",
-        # "@com_github_facebook_folly//:folly",
-        "@com_github_google_double_conversion//:double-conversion",
     ],
 )
