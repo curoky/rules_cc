@@ -2,10 +2,10 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_r
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
 
-def native_github_repo(name, remote, branch = "master"):
+def native_github_repo(name, remote, branch = "master", patch_cmds = []):
     if not remote.startswith("http"):
         remote = "https://github.com/" + remote + ".git"
-    return git_repository(name = name, remote = remote, branch = branch)
+    return git_repository(name = name, remote = remote, branch = branch, patch_cmds = patch_cmds)
 
 def new_github_repo(name, remote, path = None, branch = "master"):
     if path == None:
@@ -34,7 +34,13 @@ def load_all_repo():
     native_github_repo("com_github_google_benchmark", "google/benchmark")
     native_github_repo("com_github_google_boringssl", "google/boringssl", branch = "master-with-bazel")
     native_github_repo("com_github_google_brotli", "google/brotli")
-    native_github_repo("com_github_google_double_conversion", "google/double-conversion")
+    native_github_repo(
+        "com_github_google_double_conversion",
+        "google/double-conversion",
+        patch_cmds = [
+            "sed -i -e '10i\\includes = [\".\"],' BUILD",
+        ],
+    )
     native_github_repo("com_github_google_flatbuffers", "google/flatbuffers")
     native_github_repo("com_github_google_glog", "google/glog")
     native_github_repo("com_github_google_gtest", "google/googletest")
