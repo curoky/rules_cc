@@ -7,16 +7,15 @@ filegroup(
 
 genrule(
     name = "snappy_stubs_public_h",
-    srcs = ["@//third_party/snappy/extra:snappy-stubs-public.h"],
+    srcs = [":snappy_stubs_public_h_in"],
     outs = ["snappy-stubs-public.h"],
-    cmd = "cp $< $@",
-)
-
-genrule(
-    name = "config_h",
-    srcs = ["@//third_party/snappy/extra:config.h"],
-    outs = ["config.h"],
-    cmd = "cp $< $@",
+    cmd = """
+    export HAVE_SYS_UIO_H_01=1
+    export PROJECT_VERSION_MAJOR=1
+    export PROJECT_VERSION_MINOR=1
+    export PROJECT_VERSION_PATCH=8
+    envsubst < $< > $@
+    """,
 )
 
 cc_library(

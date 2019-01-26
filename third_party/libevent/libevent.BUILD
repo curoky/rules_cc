@@ -25,8 +25,8 @@ cc_library(
     includes = ["include"],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/libevent/extra:config",
-        "@//third_party/libevent/extra:config-private",
+        "@com_curoky_rules_cc//third_party/libevent/extra:config",
+        "@com_curoky_rules_cc//third_party/libevent/extra:config-private",
         "@org_openssl//:ssl",
     ],
 )
