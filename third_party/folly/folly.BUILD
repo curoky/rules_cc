@@ -25,7 +25,7 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/folly:config",
+        "@rules_3rd//third_party/folly:config",
         "@boost//:algorithm",
         "@boost//:container",
         "@boost//:context",

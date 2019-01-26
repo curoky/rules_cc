@@ -7,7 +7,7 @@ cc_library(
     includes = ["include"],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/restclient/extra:version",
+        "@rules_3rd//third_party/restclient/extra:version",
         "@com_github_curl//:curl",
     ],
 )

@@ -68,7 +68,7 @@ cc_library(
     # includes = ["."],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/fbthrift/extra:rpcmetadata",
+        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@com_github_facebook_fbthrift//:gen",
         # "@com_github_facebook_fbthrift//:thrift-core",
         # "@com_github_facebook_folly//:folly",
