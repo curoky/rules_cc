@@ -68,6 +68,7 @@ def load_all_repo():
     native_github_repo("com_github_google_re2", "google/re2")
     native_github_repo("com_github_immer", "arximboldi/immer")
     native_github_repo("com_google_protobuf", "protocolbuffers/protobuf")
+    native_github_repo("com_grail_bazel_compdb", "grailbio/bazel-compilation-database")
 
     new_github_repo("com_axboe_liburing", "axboe/liburing")
     new_github_repo("com_github_aappleby_murmurhash", "aappleby/smhasher", path = "murmurhash/murmurhash")
