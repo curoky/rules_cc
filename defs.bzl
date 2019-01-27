@@ -44,6 +44,13 @@ def load_all_repo():
 
     native_github_repo("com_github_abseil_abseil", "abseil/abseil-cpp")
     native_github_repo("com_github_catchorg_catch2", "catchorg/Catch2", branch = "v2.x")
+    native_github_repo(
+        "com_github_cppitertools",
+        "ryanhaining/cppitertools",
+        patch_cmds = [
+            "sed -i -e '42i\\include_prefix = \"cppitertools\",' BUILD",
+        ],
+    )
     native_github_repo("com_github_gflags_gflags", "gflags/gflags")
     native_github_repo("com_github_google_benchmark", "google/benchmark")
     native_github_repo("com_github_google_boringssl", "google/boringssl", branch = "master-with-bazel")
