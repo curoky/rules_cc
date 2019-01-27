@@ -6,14 +6,13 @@
  */
 #pragma once
 
-#include <thrift/lib/cpp2/gen/module_constants_h.h>
+#include "thrift/lib/thrift/gen-cpp2/reflection_metadata.h"
+#include <thrift/lib/cpp2/visitation/visit_union.h>
 
-#include "thrift/lib/thrift/gen-cpp2/reflection_types.h"
+namespace apache {
+namespace thrift {
+namespace detail {
 
-namespace apache { namespace thrift { namespace reflection {
-
-struct reflection_constants {
-
-};
-
-}}} // apache::thrift::reflection
+} // namespace detail
+} // namespace thrift
+} // namespace apache

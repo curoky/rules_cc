@@ -5,15 +5,5 @@
  *  @generated
  */
 #pragma once
-
-#include <thrift/lib/cpp2/gen/module_constants_h.h>
-
-#include "thrift/lib/thrift/gen-cpp2/metadata_types.h"
-
-namespace apache { namespace thrift { namespace metadata {
-
-struct metadata_constants {
-
-};
-
-}}} // apache::thrift::metadata
+#include "thrift/lib/thrift/gen-cpp2/metadata_for_each_field.h"
+#include "thrift/lib/thrift/gen-cpp2/metadata_visit_union.h"
