@@ -15,10 +15,7 @@ cc_library(
         ],
     ),
     hdrs = glob(["folly/**/*.h"]),
-    copts = [
-        "-std=c++17",
-        "-Iexternal/com_github_google_double_conversion",
-    ],
+    copts = ["-std=c++17"],
     includes = ["."],
     linkopts = ["-ldl"],
     visibility = ["//visibility:public"],
