@@ -66,6 +66,7 @@ def load_all_repo():
     native_github_repo("com_github_google_glog", "google/glog")
     native_github_repo("com_github_google_gtest", "google/googletest")
     native_github_repo("com_github_google_re2", "google/re2")
+    native_github_repo("com_github_immer", "arximboldi/immer")
     native_github_repo("com_google_protobuf", "protocolbuffers/protobuf")
 
     new_github_repo("com_axboe_liburing", "axboe/liburing")
