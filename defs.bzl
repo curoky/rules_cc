@@ -68,6 +68,7 @@ def load_all_repo():
     new_github_repo("com_github_cameron314_readerwriterqueue", "cameron314/readerwriterqueue")
     new_github_repo("com_github_cjson", "DaveGamble/cJSON", path = "cjson/cjson")
     new_github_repo("com_github_cpp_httplib", "yhirose/cpp-httplib")
+    new_github_repo("com_github_cpp_peglib", "yhirose/cpp-peglib", path = "peglib/peglib")
     new_github_repo("com_github_facebook_fbthrift", "facebook/fbthrift", branch = "v2020.10.19.00")
     new_github_repo("com_github_facebook_folly", "facebook/folly")
     new_github_repo("com_github_facebook_proxygen", "facebook/proxygen", branch = "v2020.10.19.00")
