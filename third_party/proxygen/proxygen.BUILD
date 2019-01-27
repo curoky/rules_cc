@@ -68,7 +68,6 @@ cc_library(
     hdrs = glob(["proxygen/**/*.h"]),
     copts = [
         "-std=c++17",
-        "-Iexternal/com_github_google_double_conversion",
     ],
     includes = ["."],
     visibility = ["//visibility:public"],
@@ -76,6 +75,5 @@ cc_library(
         "@boost//:iostreams",
         "@com_github_facebook_folly//:folly",
         "@com_github_facebook_wangle//:wangle",
-        "@com_github_google_double_conversion//:double-conversion",
     ],
 )
