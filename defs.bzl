@@ -88,6 +88,7 @@ def load_all_repo():
     new_github_repo("com_github_gabime_spdlog", "gabime/spdlog", branch = "v1.x")
     new_github_repo("com_github_google_cityhash", "google/cityhash")
     new_github_repo("com_github_google_crc32c", "google/crc32c")
+    new_github_repo("com_github_icecream", "renatoGarcia/icecream-cpp", path = "icecream/icecream")
     new_github_repo("com_github_jsoncpp", "open-source-parsers/jsoncpp")
     new_github_repo("com_github_lz4", "lz4/lz4", branch = "dev")
     new_github_repo("com_github_msgpack_msgpack", "msgpack/msgpack-c", path = "msgpack/msgpack", branch = "cpp_master")
