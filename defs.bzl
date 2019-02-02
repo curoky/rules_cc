@@ -78,6 +78,7 @@ def load_all_repo():
     new_github_repo("com_github_cjson", "DaveGamble/cJSON", path = "cjson/cjson")
     new_github_repo("com_github_cpp_httplib", "yhirose/cpp-httplib")
     new_github_repo("com_github_cpp_peglib", "yhirose/cpp-peglib", path = "peglib/peglib")
+    new_github_repo("com_github_facebook_fatal", "facebook/fatal")
     new_github_repo("com_github_facebook_fbthrift", "facebook/fbthrift", branch = "master")
     new_github_repo("com_github_facebook_folly", "facebook/folly", branch = "master")
     new_github_repo("com_github_facebook_proxygen", "facebook/proxygen", branch = "master")
