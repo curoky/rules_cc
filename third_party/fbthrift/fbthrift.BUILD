@@ -12,42 +12,67 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_cc//cc:defs.bzl", "cc_library")
-
-package(default_visibility = ["//visibility:public"])
-
-"""
-load("@rules_flex//flex:flex.bzl", "flex")
+load("@com_curoky_rules_cc//third_party/fbthrift:build_defs.bzl", "fbthrift_library")
 load("@rules_bison//bison:bison.bzl", "bison")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+load("@rules_flex//flex:flex.bzl", "flex")
+
+cc_binary(
+    name = "compiler_generate_build_templates",
+    srcs = ["thrift/compiler/generate/build_templates.cc"],
+    copts = ["-std=c++17"],
+    deps = ["@boost//:filesystem"],
+)
+
+filegroup(
+    name = "templates_files",
+    srcs = glob(["thrift/compiler/generate/templates/**/*.mustache"]),
+)
+
+genrule(
+    name = "templates_cc",
+    srcs = [":templates_files"],
+    outs = ["templates.cc"],
+    cmd = "$(location :compiler_generate_build_templates) external/com_github_facebook_fbthrift/thrift/compiler/generate/templates >$@",
+    tools = [":compiler_generate_build_templates"],
+)
+
 flex(
-    name = "thriftl_srcs",
+    name = "thriftl",
     src = "thrift/compiler/parse/thriftl.ll",
 )
 
 bison(
-    name = "thrifty_srcs",
-    src = "thrift/compiler/parse/thriftl.yy",
+    name = "thrifty",
+    src = "thrift/compiler/parse/thrifty.yy",
+    bison_options = [
+        "--skeleton=lalr1.cc",
+        # "--language=c++",
+    ],
 )
 
-cc_library(
-    name = "compiler",
+cc_binary(
+    name = "thriftc",
     srcs = glob(
-        ["thrift/compiler/**/*.cc"],
         [
+            "thrift/compiler/**/*.h",
+            "thrift/compiler/**/*.cc",
+            "thrift/compiler/**/*.cpp",
+        ],
+        exclude = [
             "thrift/compiler/**/test/**",
             "thrift/compiler/**/example/**",
             "thrift/compiler/**/benchmark/**",
+            "thrift/compiler/generate/build_templates.cc",
         ],
     ) + [
-        ":thriftl_srcs",
-        ":thrifty_srcs",
+        ":thriftl",
+        ":thrifty",
+        ":templates_cc",
     ],
-    hdrs = glob([
-        "thrift/compiler/**/*.h",
-    ]),
     copts = [
         "-std=c++17",
-        # "-DTHRIFTY_HH=",
+        "-DTHRIFTY_HH=<thrifty.h>",
         "-DTHRIFT_HAVE_LIBSNAPPY=0",
     ],
     includes = ["."],
@@ -55,185 +80,37 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = ["@com_github_facebook_folly//:folly"],
 )
-"""
 
-# from cpp
+fbthrift_library(
+    name = "thrift_files",
+    srcs = glob(["thrift/lib/thrift/*.thrift"]),
+    include_prefix = "thrift/lib/thrift",
+    out_prefix = "thrift/lib/thrift",
+    services = ["ThriftMetadataService"],
+)
+
 cc_library(
-    name = "thrift-core",
-    srcs = [
-        "thrift/lib/cpp/Thrift.cpp",
-        "thrift/lib/cpp2/FieldRef.cpp",
-    ],
+    name = "fbthrift",
+    srcs = glob(
+        ["thrift/lib/cpp*/**/*.cpp"],
+        exclude = [
+            "thrift/lib/cpp*/**/demo/**",
+            "thrift/lib/cpp*/**/test/**",
+            "thrift/lib/cpp*/**/tests/**",
+            "thrift/lib/cpp*/**/testutil/**",
+        ],
+    ) + [":thrift_files"],
     hdrs = glob([
         "thrift/lib/thrift/*.h",
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
+        "thrift/lib/cpp*/**/*.h",
     ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-    ],
-)
-
-cc_library(
-    name = "concurrency",
-    srcs = glob([
-        "thrift/lib/cpp/concurrency/*.cpp",
-    ]),
-    hdrs = glob([
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-    ],
-)
-
-cc_library(
-    name = "transport",
-    srcs = glob([
-        "thrift/lib/cpp/transport/*.cpp",
-    ]) + [
-        "thrift/lib/cpp/util/VarintUtils.cpp",
-        "thrift/lib/cpp/util/THttpParser.cpp",
-        "thrift/lib/cpp/util/PausableTimer.cpp",
-    ],
-    hdrs = glob([
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
-    ],
-)
-
-cc_library(
-    name = "async",
-    srcs = glob([
-        "thrift/lib/cpp/async/*.cpp",
-    ]) + [
-        "thrift/lib/cpp/ContextStack.cpp",
-        "thrift/lib/cpp/EventHandlerBase.cpp",
-        "thrift/lib/cpp/server/TServerObserver.cpp",
-    ],
-    hdrs = glob([
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
-    ],
-)
-
-cc_library(
-    name = "thrift",
-    deps = [
-        ":async",
-        ":concurrency",
-        ":thriftprotocol",
-        ":transport",
-    ],
-)
-
-cc_library(
-    name = "thriftmetadata",
-)
-
-cc_library(
-    name = "thriftfrozen2",
-)
-
-cc_library(
-    name = "gen",
-    srcs = glob([
-        "thrift/lib/cpp2/gen/*.cpp",
-    ]),
-    hdrs = glob([
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-    ],
-)
-
-cc_library(
-    name = "thriftprotocol",
-    srcs = glob([
-        "thrift/lib/cpp/protocol/*.cpp",
-        "thrift/lib/cpp2/protocol/*.cpp",
-    ]),
-    hdrs = glob([
-        "thrift/lib/cpp/**/*.h",
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
-    includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-        "@rules_3rd//third_party/fbthrift/extra:frozen",
-        "@rules_3rd//third_party/fbthrift/extra:reflection",
-    ],
-)
-
-cc_library(
-    name = "thriftcpp2",
-    srcs = glob(
-        [
-            "thrift/lib/cpp2/async/*.cpp",
-            "thrift/lib/cpp2/security/**/*.cpp",
-            "thrift/lib/cpp2/server/*.cpp",
-            "thrift/lib/cpp2/server/peeking/*.cpp",
-            "thrift/lib/cpp2/transport/**/*.cpp",
-            "thrift/lib/cpp2/util/*.cpp",
-            "thrift/lib/cpp2/*.cpp",
-        ],
-        [
-            "thrift/lib/cpp2/async/HTTP*.cpp",
-            "thrift/lib/cpp2/transport/core/testutil/*.cpp",
-            "thrift/lib/cpp2/**/test/**/*.cpp",
-            "thrift/lib/cpp2/**/testutil/**/*.cpp",
-        ],
-    ),
-    hdrs = glob([
-        "thrift/lib/cpp2/**/*.h",
-    ]),
-    copts = [
-        "-std=c++17",
-    ],
+    copts = ["-std=c++17"],
     includes = ["."],
     visibility = ["//visibility:public"],
     deps = [
-        ":concurrency",
-        ":thrift",
-        ":thriftprotocol",
         "@com_github_facebook_folly//:folly",
         "@com_github_facebook_proxygen//:proxygen",
         "@com_github_facebook_wangle//:wangle",
-        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@zlib",
     ],
 )
