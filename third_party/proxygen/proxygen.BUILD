@@ -66,6 +66,7 @@ cc_library(
             "proxygen/external/**/*.cpp",
             "proxygen/lib/http/**/*.cpp",
             "proxygen/lib/utils/**/*.cpp",
+            "proxygen/httpserver/**/*.cpp",
         ],
         [
             "proxygen/lib/http/**/HQ*.cpp",
@@ -73,7 +74,9 @@ cc_library(
             "proxygen/lib/http/codec/compress/experimental/**",
             "proxygen/lib/http/SynchronizedLruQuicPskCache*.cpp",
             "proxygen/**/test/**/*.cpp",
+            "proxygen/**/tests/**/*.cpp",
             "proxygen/**/example/**/*.cpp",
+            "proxygen/httpserver/samples/**",
         ],
     ) + [
         ":gen_http_common_headers",
