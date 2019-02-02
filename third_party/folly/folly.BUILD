@@ -25,6 +25,7 @@ cc_library(
             "folly/tools/**",
             "folly/experimental/exception_tracer/**",
             "folly/experimental/TestUtil.cpp",
+            "folly/experimental/io/HugePageUtil.cpp",
             "folly/experimental/JSONSchemaTester.cpp",
         ],
     ),
