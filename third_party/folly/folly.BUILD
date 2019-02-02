@@ -29,7 +29,10 @@ cc_library(
         ],
     ),
     hdrs = glob(["folly/**/*.h"]),
-    copts = ["-std=c++17"],
+    copts = [
+        "-std=c++17",
+        "-DFOLLY_SANITIZE_ADDRESS",
+    ],
     includes = ["."],
     linkopts = ["-ldl"],
     visibility = ["//visibility:public"],
