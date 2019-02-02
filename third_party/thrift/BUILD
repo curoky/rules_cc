@@ -11,12 +11,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-load("@rules_cc//cc:defs.bzl", "cc_library")
-
-cc_library(
-    name = "config",
-    hdrs = ["config.h"],
-    include_prefix = "thrift",
-    visibility = ["//visibility:public"],
-)
