@@ -14,7 +14,6 @@
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
 
 def native_github_repo(name, remote, branch = "master", patch_cmds = []):
     if not remote.startswith("http"):
@@ -38,9 +37,9 @@ def new_github_repo(name, remote, path = None, branch = "master"):
         build_file = path,
     )
 
-def load_all_repo():
-    # https://github.com/nelhage/rules_boost/blob/master/BUILD.boost
-    boost_deps()
+def register():
+    native_github_repo("rules_python", "bazelbuild/rules_python")
+    native_github_repo("com_github_nelhage_rules_boost", "nelhage/rules_boost")
 
     native_github_repo("com_github_abseil_abseil", "abseil/abseil-cpp")
     native_github_repo("com_github_catchorg_catch2", "catchorg/Catch2", branch = "v2.x")
@@ -58,9 +57,7 @@ def load_all_repo():
     native_github_repo(
         "com_github_google_double_conversion",
         "google/double-conversion",
-        patch_cmds = [
-            "sed -i -e '10i\\includes = [\".\"],' BUILD",
-        ],
+        patch_cmds = ["sed -i -e '10i\\includes = [\".\"],' BUILD"],
     )
     native_github_repo("com_github_google_flatbuffers", "google/flatbuffers")
     native_github_repo("com_github_google_glog", "google/glog")
@@ -72,7 +69,8 @@ def load_all_repo():
 
     new_github_repo("com_axboe_liburing", "axboe/liburing")
     new_github_repo("com_github_aappleby_murmurhash", "aappleby/smhasher", path = "murmurhash/murmurhash")
-    new_github_repo("com_github_apache_thrift", "apache/thrift", branch = "0.13.0")
+    new_github_repo("com_github_apache_thrift", "apache/thrift", branch = "0.14.1")
+    new_github_repo("com_github_argon2", "P-H-C/phc-winner-argon2", path = "argon2/argon2")
     new_github_repo("com_github_cameron314_concurrentqueue", "cameron314/concurrentqueue")
     new_github_repo("com_github_cameron314_readerwriterqueue", "cameron314/readerwriterqueue")
     new_github_repo("com_github_cjson", "DaveGamble/cJSON", path = "cjson/cjson")
@@ -89,6 +87,7 @@ def load_all_repo():
     new_github_repo("com_github_gabime_spdlog", "gabime/spdlog", branch = "v1.x")
     new_github_repo("com_github_google_cityhash", "google/cityhash")
     new_github_repo("com_github_google_crc32c", "google/crc32c")
+    new_github_repo("com_github_google_snappy", "google/snappy")
     new_github_repo("com_github_icecream", "renatoGarcia/icecream-cpp", path = "icecream/icecream")
     new_github_repo("com_github_jsoncpp", "open-source-parsers/jsoncpp")
     new_github_repo("com_github_lz4", "lz4/lz4", branch = "dev")
@@ -133,24 +132,8 @@ def load_all_repo():
     )
 
     http_archive(
-        name = "com_github_google_snappy",
-        build_file = "@rules_3rd//:third_party/snappy/snappy.BUILD",
-        sha256 = "284891411a87e313753ce992b28739e4eb47ddb49ec00e5c5d97498cd4f8a305",
-        strip_prefix = "snappy-ea660b57d65d68d521287c903459b6dd3b2804d0",
-        urls = ["https://github.com/google/snappy/archive/ea660b57d65d68d521287c903459b6dd3b2804d0.tar.gz"],
-    )
-
-    http_archive(
-        name = "com_github_argon2",
-        build_file = "@rules_3rd//:third_party/argon2/argon2.BUILD",
-        sha256 = "eaea0172c1f4ee4550d1b6c9ce01aab8d1ab66b4207776aa67991eb5872fdcd8",
-        strip_prefix = "phc-winner-argon2-20171227",
-        url = "https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz",
-    )
-
-    http_archive(
         name = "com_github_libsodium",
-        build_file = "@rules_3rd//:third_party/libsodium/libsodium.BUILD",
+        build_file = "@com_curoky_rules_cc//:third_party/libsodium/libsodium.BUILD",
         sha256 = "0c14604bbeab2e82a803215d65c3b6e74bb28291aaee6236d65c699ccfe1a98c",
         strip_prefix = "libsodium-1.0.16",
         url = "https://github.com/jedisct1/libsodium/archive/1.0.16.tar.gz",
@@ -185,14 +168,6 @@ def load_all_repo():
         # don't special language by default
         patch_cmds = ["sed -i '83d' bison/bison.bzl"],
     )
-
-    # http_archive(
-    #     name = "com_github_facebook_zstd",
-    #     build_file = "@rules_3rd//:third_party/zstd/zstd.BUILD",
-    #     sha256 = "188ba167e7a507b545c5f455af4afe3a34b2cee5551949fa000a8218ff4fda67",
-    #     strip_prefix = "zstd-bd2740f3476c46b9f69d59e49e7391c2762e04b3",
-    #     urls = ["https://github.com/facebook/zstd/archive/bd2740f3476c46b9f69d59e49e7391c2762e04b3.tar.gz"],
-    # )
 
     new_git_repository(
         name = "com_github_libevent_libevent",
