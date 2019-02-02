@@ -16,7 +16,14 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "config",
-    include_prefix="thrift",
     hdrs = ["config.h"],
+    include_prefix = "thrift",
     visibility = ["//visibility:public"],
 )
+
+# cc_library(
+#     name = "version",
+#     hdrs = ["version.h"],
+#     include_prefix = "thrift",
+#     visibility = ["//visibility:public"],
+# )
