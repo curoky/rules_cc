@@ -15,12 +15,19 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-def native_github_repo(name, remote, branch = "master", patch_cmds = []):
+def native_github_repo(name, remote, branch = "master", patch_cmds = [], patches = [], patch_args = ["-p1"]):
     if not remote.startswith("http"):
         remote = "https://github.com/" + remote + ".git"
-    return git_repository(name = name, remote = remote, branch = branch, patch_cmds = patch_cmds)
+    return git_repository(
+        name = name,
+        remote = remote,
+        branch = branch,
+        patch_cmds = patch_cmds,
+        patches = patches,
+        patch_args = patch_args,
+    )
 
-def new_github_repo(name, remote, path = None, branch = "master"):
+def new_github_repo(name, remote, path = None, branch = "master", patch_cmds = [], patches = [], patch_args = ["-p1"]):
     if path == None:
         path = remote.rsplit("/")[-1]
         path = path + "/" + path
@@ -35,6 +42,9 @@ def new_github_repo(name, remote, path = None, branch = "master"):
         remote = remote,
         branch = branch,
         build_file = path,
+        patch_cmds = patch_cmds,
+        patches = patches,
+        patch_args = patch_args,
     )
 
 def register():
