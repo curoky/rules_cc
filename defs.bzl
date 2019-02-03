@@ -39,7 +39,16 @@ def new_github_repo(name, remote, path = None, branch = "master"):
 
 def register():
     native_github_repo("rules_python", "bazelbuild/rules_python")
-    native_github_repo("com_github_nelhage_rules_boost", "nelhage/rules_boost")
+    native_github_repo(
+        "com_github_nelhage_rules_boost",
+        "nelhage/rules_boost",
+        patch_cmds = [
+            'sed -i -e "s/openssl/org_openssl/g" boost/boost.bzl',
+            'sed -i -e "s/org_lzma_lzma/org_xz_xz/g" boost/boost.bzl',
+            'sed -i -e "s?org_lzma_lzma//:lzma?org_xz_xz//:xz?g" BUILD.boost',
+            'sed -i -e "s/org_lzma_lzma/org_xz_xz/g" BUILD.lzma',
+        ],
+    )
 
     native_github_repo("com_github_abseil_abseil", "abseil/abseil-cpp")
     native_github_repo("com_github_catchorg_catch2", "catchorg/Catch2", branch = "v2.x")
@@ -142,7 +151,7 @@ def register():
     )
 
     http_archive(
-        name = "xz",
+        name = "org_xz_xz",
         build_file = "@rules_3rd//:third_party/xz/xz.BUILD",
         sha256 = "f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10",
         strip_prefix = "xz-5.2.5",

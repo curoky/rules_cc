@@ -64,6 +64,7 @@ cc_library(
         "@com_github_libsodium//:sodium",
         "@com_pagure_libaio//:libaio",
         "@libiberty",
+        "@org_xz_xz//:xz",
         "@org_openssl//:crypto",
         "@org_openssl//:ssl",
         "@org_xz_xz//:xz",
