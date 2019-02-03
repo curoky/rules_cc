@@ -91,7 +91,7 @@ cc_library(
         "@boost//:smart_ptr",
         "@boost//:tokenizer",
         "@com_github_libevent_libevent//:libevent",
+        "@net_zlib_zlib//:zlib",
         "@rules_3rd//third_party/thrift/extra:config",
-        "@zlib",
     ],
 )

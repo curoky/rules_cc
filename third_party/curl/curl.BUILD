@@ -47,6 +47,5 @@ cc_library(
         "@net_zlib_zlib//:zlib",
         "@org_openssl//:ssl",
         "@rules_3rd//third_party/curl/extra:config",
-        "@zlib",
     ],
 )
