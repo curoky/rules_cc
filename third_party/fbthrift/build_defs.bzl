@@ -80,7 +80,7 @@ def fbthrift_library(
         "SRCS=($(SRCS));",
         "for f in $${SRCS[@]}; do",
         "$(location %s)" % (thriftc_path),
-        "-gen %s:include_prefix=%s" % (language, include_prefix),
+        "-gen %s:json,include_prefix=%s" % (language, include_prefix),
         " ".join(fbthriftc_args),
         " ".join(include_paths_cmd),
         output_directory,
