@@ -12,17 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# load("@rules_cc//cc:defs.bzl", "cc_library")
-
-# licenses(["notice"])
-
-# exports_files(
-#     visibility = ["//visibility:public"],
-# )
-
 load("@rules_cc//cc:defs.bzl", "cc_library")
-
-licenses(["notice"])
 
 cc_library(
     name = "config",

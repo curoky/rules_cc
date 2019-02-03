@@ -14,8 +14,6 @@
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-licenses(["notice"])  # ISC License
-
 genrule(
     name = "gen_sh",
     outs = [

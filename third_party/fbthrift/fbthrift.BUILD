@@ -17,8 +17,6 @@ load("@rules_flex//flex:flex.bzl", "flex")
 load("@rules_bison//bison:bison.bzl", "bison")
 load("@rules_3rd//third_party/fbthrift:build_defs.bzl", "fbthrift_library")
 
-licenses(["notice"])
-
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
@@ -35,12 +33,8 @@ filegroup(
 
 genrule(
     name = "templates_cc",
-    srcs = [
-        ":templates_files",
-    ],
-    outs = [
-        "templates.cc",
-    ],
+    srcs = [":templates_files"],
+    outs = ["templates.cc"],
     cmd = "$(location :compiler_generate_build_templates) external/com_github_facebook_fbthrift/thrift/compiler/generate/templates >$@",
     tools = [":compiler_generate_build_templates"],
 )
@@ -84,9 +78,7 @@ cc_binary(
         "-DTHRIFT_HAVE_LIBSNAPPY=0",
     ],
     includes = ["."],
-    deps = [
-        "@com_github_facebook_folly//:folly",
-    ],
+    deps = ["@com_github_facebook_folly//:folly"],
 )
 
 fbthrift_library(

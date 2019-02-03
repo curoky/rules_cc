@@ -16,8 +16,6 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("@rules_flex//flex:flex.bzl", "flex")
 load("@rules_bison//bison:bison.bzl", "bison")
 
-licenses(["notice"])
-
 flex(
     name = "thriftl",
     src = "compiler/cpp/src/thrift/thriftl.ll",

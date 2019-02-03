@@ -14,8 +14,6 @@
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-licenses(["notice"])  # BSD/MIT-like license (for zlib)
-
 _ZLIB_HEADERS = [
     "crc32.h",
     "deflate.h",

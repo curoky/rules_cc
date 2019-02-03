@@ -14,8 +14,6 @@
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-licenses(["notice"])
-
 cc_library(
     name = "libevent",
     srcs = glob(

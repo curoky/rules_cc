@@ -4,10 +4,6 @@
 
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
-licenses(["notice"])  # MIT/X derivative license
-
-exports_files(["COPYING"])
-
 CURL_WIN_COPTS = [
     "/Iexternal/curl/lib",
     "/DBUILDING_LIBCURL",

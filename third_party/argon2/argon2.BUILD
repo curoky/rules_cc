@@ -14,7 +14,6 @@
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-licenses(["notice"])  # MIT
 
 # cc_library(
 #     name = "argon2",
@@ -45,7 +44,7 @@ cc_library(
             "src/**/*.h",
             "src/**/*.c",
         ],
-        [
+        exclude = [
             "**/test.c",
             "**/bench.c",
             "**/genkat.c",
