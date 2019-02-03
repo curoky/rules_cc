@@ -90,7 +90,7 @@ def fbthrift_library(
     genrule_cmd = " ".join([
         "mkdir -p $(@D)/%s;" % (out_prefix),
         "SRCS=($(SRCS));",
-        "for f in $${SRCS[@]:0:%s}; do" % len(srcs),
+        "for f in $${SRCS[@]}; do",
         "$(location %s)" % (thriftc_path),
         "-gen %s:include_prefix=%s" % (language, include_prefix),
         " ".join(fbthriftc_args),
