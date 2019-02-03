@@ -85,7 +85,10 @@ fbthrift_library(
     srcs = glob(["thrift/lib/thrift/*.thrift"]),
     include_prefix = "thrift/lib/thrift",
     out_prefix = "thrift/lib/thrift",
-    services = ["ThriftMetadataService"],
+    services = [
+        "ThriftMetadataService",
+        "RocketUpgrade",
+    ],
 )
 
 cc_library(
