@@ -18,15 +18,13 @@ cc_library(
     name = "wangle",
     srcs = glob(
         ["wangle/**/*.cpp"],
-        [
+        exclude = [
             "wangle/**/test/**/*.cpp",
             "wangle/**/example/**/*.cpp",
         ],
     ),
     hdrs = glob(["wangle/**/*.h"]),
-    copts = [
-        "-std=c++17",
-    ],
+    copts = ["-std=c++17"],
     includes = ["."],
     visibility = ["//visibility:public"],
     deps = [

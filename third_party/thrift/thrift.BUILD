@@ -58,24 +58,23 @@ cc_binary(
         ":compiler_version",
     ],
     includes = ["compiler/cpp/src"],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "thrift",
     srcs = glob(
-        ["lib/cpp/src/thrift/**/*.cpp"],
         [
+            "lib/cpp/src/thrift/**/*.cpp",
+            "lib/cpp/src/thrift/**/*.tcc",
+        ],
+        exclude = [
             "lib/cpp/src/thrift/windows/**",
             "lib/cpp/src/thrift/qt/**",
         ],
     ),
-    hdrs = glob([
-        "lib/cpp/src/thrift/**/*.h",
-        "lib/cpp/src/thrift/**/*.tcc",
-    ]),
-    copts = [
-        "-Ilib/cpp/src/",
-    ],
+    hdrs = glob(["lib/cpp/src/thrift/**/*.h"]),
+    # copts = ["-Ilib/cpp/src/"],
     includes = ["lib/cpp/src"],
     visibility = ["//visibility:public"],
     deps = [

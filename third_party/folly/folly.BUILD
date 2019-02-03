@@ -18,7 +18,7 @@ cc_library(
     name = "folly",
     srcs = glob(
         ["folly/**/*.cpp"],
-        [
+        exclude = [
             "folly/**/test/**",
             "folly/**/example/**",
             "folly/python/**",
@@ -29,16 +29,11 @@ cc_library(
         ],
     ),
     hdrs = glob(["folly/**/*.h"]),
-    copts = [
-        "-std=c++17",
-    ],
+    copts = ["-std=c++17"],
     includes = ["."],
-    linkopts = [
-        "-ldl",
-    ],
+    linkopts = ["-ldl"],
     visibility = ["//visibility:public"],
     deps = [
-        "@rules_3rd//third_party/folly:config",
         "@boost//:algorithm",
         "@boost//:container",
         "@boost//:context",
@@ -66,6 +61,7 @@ cc_library(
         "@libiberty",
         "@org_openssl//:crypto",
         "@org_openssl//:ssl",
+        "@rules_3rd//third_party/folly/extra:config",
         "@zlib",
     ],
 )

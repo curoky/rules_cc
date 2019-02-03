@@ -20,10 +20,3 @@ cc_library(
     include_prefix = "thrift",
     visibility = ["//visibility:public"],
 )
-
-# cc_library(
-#     name = "version",
-#     hdrs = ["version.h"],
-#     include_prefix = "thrift",
-#     visibility = ["//visibility:public"],
-# )

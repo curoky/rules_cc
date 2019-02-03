@@ -68,7 +68,7 @@ cc_library(
             "proxygen/lib/utils/**/*.cpp",
             "proxygen/httpserver/**/*.cpp",
         ],
-        [
+        exclude = [
             "proxygen/lib/http/**/HQ*.cpp",
             "proxygen/lib/http/stats/*.cpp",
             "proxygen/lib/http/codec/compress/experimental/**",

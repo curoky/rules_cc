@@ -21,7 +21,7 @@ cc_library(
             "src/*.cc",
             "src/*.h",
         ],
-        [
+        exclude = [
             "src/*test.cc",
             "src/*benchmark.cc",
             "src/*test_main.cc",

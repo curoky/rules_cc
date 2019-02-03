@@ -17,11 +17,8 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "xz",
     srcs = glob(
-        [
-            "src/**/*.h",
-            "src/**/*.c",
-        ],
-        [
+        ["src/**/*.c"],
+        exclude = [
             "src/xz/**",
             "src/liblzma/check/crc32_small.*",
         ],
@@ -34,17 +31,17 @@ cc_library(
         "-Isrc/liblzma/check",
         "-DHAVE_CONFIG_H",
     ],
-    includes = [
-        "src/common",
-        "src/liblzma/api",
-        "src/liblzma/check",
-        "src/liblzma/common",
-        "src/liblzma/delta",
-        "src/liblzma/lz",
-        "src/liblzma/lzma",
-        "src/liblzma/rangecoder",
-        "src/liblzma/simple",
-    ],
+    # includes = [
+    #     "src/common",
+    #     "src/liblzma/api",
+    #     "src/liblzma/check",
+    #     "src/liblzma/common",
+    #     "src/liblzma/delta",
+    #     "src/liblzma/lz",
+    #     "src/liblzma/lzma",
+    #     "src/liblzma/rangecoder",
+    #     "src/liblzma/simple",
+    # ],
     linkstatic = 1,
     visibility = ["//visibility:public"],
     deps = ["@rules_3rd//third_party/xz/extra:config"],

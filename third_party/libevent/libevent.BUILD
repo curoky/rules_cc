@@ -21,7 +21,7 @@ cc_library(
             "*.h",
             "*.c",
         ],
-        [
+        exclude = [
             "arc4random.c",  # this is a header
             "bufferevent_async.c",
             "event_iocp.c",
@@ -39,8 +39,8 @@ cc_library(
     includes = ["include"],
     visibility = ["//visibility:public"],
     deps = [
+        "@org_openssl//:ssl",
         "@rules_3rd//third_party/libevent/extra:config",
         "@rules_3rd//third_party/libevent/extra:config-private",
-        "@org_openssl//:ssl",
     ],
 )

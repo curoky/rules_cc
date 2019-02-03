@@ -21,9 +21,7 @@ cc_library(
         "src/lib_json/*.h",
         "src/lib_json/*.cpp",
     ]),
-    hdrs = glob([
-        "include/json/*.h",
-    ]),
+    hdrs = glob(["include/json/*.h"]),
     copts = [
         "-DJSON_USE_EXCEPTION=0",
         "-DJSON_HAS_INT64",

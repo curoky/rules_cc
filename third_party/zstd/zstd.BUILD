@@ -20,7 +20,7 @@ cc_library(
     name = "zstd",
     srcs = glob(
         ["lib/**/*.c"],
-        ["lib/legacy/**"],
+        exclude = ["lib/legacy/**"],
     ),
     hdrs = glob(["lib/**/*.h"]),
     includes = [

@@ -18,15 +18,13 @@ cc_library(
     name = "fizz",
     srcs = glob(
         ["fizz/**/*.cpp"],
-        [
+        exclude = [
             "fizz/**/test/**/*.cpp",
             "fizz/**/javacrypto/**/*.cpp",
         ],
     ),
     hdrs = glob(["fizz/**/*.h"]),
-    copts = [
-        "-std=c++17",
-    ],
+    copts = ["-std=c++17"],
     includes = ["."],
     visibility = ["//visibility:public"],
     deps = [

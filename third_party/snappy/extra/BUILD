@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
+load("@rules_cc//cc:defs.bzl", "cc_library")
 
-exports_files(
-    [
-        "snappy-stubs-public.h",
-        "config.h",
-    ],
+cc_library(
+    name = "config",
+    hdrs = ["config.h"],
+    includes = ["."],
     visibility = ["//visibility:public"],
 )

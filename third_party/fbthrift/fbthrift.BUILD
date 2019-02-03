@@ -17,8 +17,6 @@ load("@rules_flex//flex:flex.bzl", "flex")
 load("@rules_bison//bison:bison.bzl", "bison")
 load("@rules_3rd//third_party/fbthrift:build_defs.bzl", "fbthrift_library")
 
-package(default_visibility = ["//visibility:public"])
-
 cc_binary(
     name = "compiler_generate_build_templates",
     srcs = ["thrift/compiler/generate/build_templates.cc"],
@@ -61,7 +59,7 @@ cc_binary(
             "thrift/compiler/**/*.cc",
             "thrift/compiler/**/*.cpp",
         ],
-        [
+        exclude = [
             "thrift/compiler/**/test/**",
             "thrift/compiler/**/example/**",
             "thrift/compiler/**/benchmark/**",
@@ -78,18 +76,13 @@ cc_binary(
         "-DTHRIFT_HAVE_LIBSNAPPY=0",
     ],
     includes = ["."],
+    visibility = ["//visibility:public"],
     deps = ["@com_github_facebook_folly//:folly"],
 )
 
 fbthrift_library(
     name = "thrift_files",
-    srcs = [
-        "thrift/lib/thrift/RpcMetadata.thrift",
-        "thrift/lib/thrift/dynamic.thrift",
-        "thrift/lib/thrift/frozen.thrift",
-        "thrift/lib/thrift/metadata.thrift",
-        "thrift/lib/thrift/reflection.thrift",
-    ],
+    srcs = glob(["thrift/lib/thrift/*.thrift"]),
     include_prefix = "thrift/lib/thrift",
     out_prefix = "thrift/lib/thrift",
     services = ["ThriftMetadataService"],
@@ -112,6 +105,7 @@ cc_library(
     ]),
     copts = ["-std=c++17"],
     includes = ["."],
+    visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebook_folly//:folly",
         "@com_github_facebook_proxygen//:proxygen",
