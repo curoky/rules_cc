@@ -64,7 +64,9 @@ def register():
     native_github_repo("com_github_google_gtest", "google/googletest")
     native_github_repo("com_github_google_re2", "google/re2")
     native_github_repo("com_github_immer", "arximboldi/immer")
-    native_github_repo("com_google_protobuf", "protocolbuffers/protobuf")
+    native_github_repo("com_google_protobuf", "protocolbuffers/protobuf", patches = [
+        "@com_curoky_rules_cc//:third_party/protobuf/protobuf.patch",
+    ])
     native_github_repo("com_grail_bazel_compdb", "grailbio/bazel-compilation-database")
 
     new_github_repo("com_axboe_liburing", "axboe/liburing")
