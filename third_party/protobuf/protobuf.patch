@@ -1,0 +1,13 @@
+diff --git a/BUILD b/BUILD
+index 112432160..be612de86 100644
+--- a/BUILD
++++ b/BUILD
+@@ -50,7 +50,7 @@ GTEST_MAIN = select({
+ # ZLIB configuration
+ ################################################################################
+ 
+-ZLIB_DEPS = ["@zlib//:zlib"]
++ZLIB_DEPS = ["@net_zlib_zlib//:zlib"]
+ 
+ ################################################################################
+ # Protobuf Runtime Library
