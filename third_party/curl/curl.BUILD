@@ -47,7 +47,5 @@ cc_library(
         "@com_curoky_rules_cc//third_party/curl/extra:config",
         "@net_zlib_zlib//:zlib",
         "@org_openssl//:ssl",
-        "@rules_3rd//third_party/curl/extra:config",
-        "@zlib",
     ],
 )
