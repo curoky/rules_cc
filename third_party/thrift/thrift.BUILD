@@ -90,6 +90,6 @@ cc_library(
         "@boost//:tokenizer",
         "@com_github_libevent_libevent//:libevent",
         "@rules_3rd//third_party/thrift/extra:config",
-        "@zlib",
+        "@net_zlib_zlib//:zlib",
     ],
 )

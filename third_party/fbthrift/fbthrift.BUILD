@@ -115,6 +115,6 @@ cc_library(
         "@com_github_facebook_folly//:folly",
         "@com_github_facebook_proxygen//:proxygen",
         "@com_github_facebook_wangle//:wangle",
-        "@zlib",
+        "@net_zlib_zlib//:zlib",
     ],
 )

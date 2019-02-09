@@ -69,6 +69,6 @@ cc_library(
         "@org_openssl//:crypto",
         "@org_openssl//:ssl",
         "@rules_3rd//third_party/folly/extra:config",
-        "@zlib",
+        "@net_zlib_zlib//:zlib",
     ],
 )

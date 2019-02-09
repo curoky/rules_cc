@@ -103,7 +103,7 @@ def register():
     new_github_repo("com_github_tencent_rapidjson", "Tencent/rapidjson")
     new_github_repo("com_github_ubpa_usrefl", "Ubpa/USRefl", path = "usrefl/usrefl")
     new_github_repo("com_github_whoshuu_cpr", "whoshuu/cpr")
-    new_github_repo("zlib", "madler/zlib")
+    new_github_repo("net_zlib_zlib", "madler/zlib")
 
     new_git_repository(
         name = "com_github_google_diff_match_patch",
