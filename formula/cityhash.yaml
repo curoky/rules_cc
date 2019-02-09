@@ -1,0 +1,9 @@
+url: google/cityhash
+repo_type: new_github
+build_args:
+  srcs: '["src/city.cc"]'
+  hdrs: 'glob(["src/*.h"])'
+  includes: '["src/"]'
+  deps: '["@com_curoky_rules_cc//third_party/cityhash/extra:config"]'
+versions:
+  'heads/master':

@@ -1,0 +1,24 @@
+url: facebookincubator/fizz
+repo_type: new_github
+build_args:
+  srcs: |
+    glob(
+        ["fizz/**/*.cpp"],
+        exclude = [
+            "fizz/**/test/**/*.cpp",
+            "fizz/**/javacrypto/**/*.cpp",
+        ],
+    )
+  hdrs: 'glob(["fizz/**/*.h"])'
+  copts: '["-std=c++17"]'
+  includes: '["."]'
+  deps: |
+    [
+        "@com_github_facebook_folly//:folly",
+        "@com_github_facebook_zstd//:zstd",
+        "@com_github_google_brotli//:brotlidec",
+        "@com_github_google_brotli//:brotlienc",
+        "@com_github_jedisct1_libsodium//:sodium",
+    ]
+versions:
+  'heads/master':

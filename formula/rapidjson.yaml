@@ -1,0 +1,7 @@
+url: Tencent/rapidjson
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/**/*.h"])'
+  includes: '["include"]'
+versions:
+  'heads/master':

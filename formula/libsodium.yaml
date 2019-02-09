@@ -1,0 +1,6 @@
+url: jedisct1/libsodium
+repo_type: new_github
+repo_args:
+  build_file: '"@com_curoky_rules_cc//:third_party/libsodium/libsodium.BUILD"'
+versions:
+  'tags/1.0.16':

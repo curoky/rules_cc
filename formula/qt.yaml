@@ -1,0 +1,8 @@
+url: qt/qt
+namespace: qt
+repo_type: local
+repo_args:
+  path: '"/home/linuxbrew/.linuxbrew/opt/qt@5.13.2"'
+  build_file: '"@com_curoky_rules_cc//:third_party/qt/qt.BUILD"'
+versions:
+  'heads/master':

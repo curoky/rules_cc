@@ -1,0 +1,7 @@
+url: renatoGarcia/icecream-cpp
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.hpp"])'
+  includes: '["."]'
+versions:
+  'heads/master':

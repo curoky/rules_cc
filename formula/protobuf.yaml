@@ -1,0 +1,8 @@
+url: protocolbuffers/protobuf
+namespace: com_google_protobuf
+repo_type: origin_github
+repo_args:
+  patch_cmds: |
+    [ 'sed -i -e "s/@zlib/@net_zlib_zlib/g" BUILD ']
+versions:
+  'heads/master':

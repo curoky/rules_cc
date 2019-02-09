@@ -1,0 +1,7 @@
+url: cameron314/readerwriterqueue
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.h"])'
+  includes: '["."]'
+versions:
+  'heads/master':

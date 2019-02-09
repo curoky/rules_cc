@@ -1,0 +1,9 @@
+url: gabime/spdlog
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/**/*.h"])'
+  defines: '["SPDLOG_FMT_EXTERNAL"]'
+  includes: '["include"]'
+  deps: '["@com_github_fmtlib_fmt//:fmt"]'
+versions:
+  'heads/v1.x':

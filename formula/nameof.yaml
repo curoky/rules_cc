@@ -1,0 +1,7 @@
+url: Neargye/nameof
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/**/*.hpp"])'
+  includes: '["include"]'
+versions:
+  'heads/master':

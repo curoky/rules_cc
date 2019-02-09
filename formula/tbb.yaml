@@ -1,0 +1,11 @@
+url: tbb/tbb
+namespace: tbb
+repo_type: local
+build_args:
+  srcs: '["lib/libtbb.so.2"]'
+  hdrs: 'glob(["include/**/*.h"])'
+  includes: '["include"]'
+repo_args:
+  path: '"/home/linuxbrew/.linuxbrew/opt/tbb"'
+versions:
+  'heads/master':

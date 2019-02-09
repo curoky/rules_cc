@@ -1,0 +1,7 @@
+url: cameron314/concurrentqueue
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.h"])'
+  includes: '["."]'
+versions:
+  'heads/master':

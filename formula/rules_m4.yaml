@@ -1,0 +1,5 @@
+url: jmillikin/rules_m4
+namespace: rules_m4
+repo_type: origin_github
+versions:
+  'heads/master':

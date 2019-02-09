@@ -1,0 +1,26 @@
+url: P-H-C/phc-winner-argon2
+repo_type: new_github
+build_args:
+  srcs: |
+    glob(
+        [
+            "src/**/*.h",
+            "src/**/*.c",
+        ],
+        exclude = [
+            "**/test.c",
+            "**/bench.c",
+            "**/genkat.c",
+            "**/opt.c",
+            "**/run.c",
+        ],
+    )
+  hdrs: 'glob(["include/*.h"])'
+  copts: |
+    [
+      "-std=c++17",
+      "-Isrc",
+    ]
+  includes: '["include"]'
+versions:
+  'heads/master':

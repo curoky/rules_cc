@@ -1,0 +1,7 @@
+url: openssl/openssl
+namespace: org_openssl
+repo_type: new_github
+repo_args:
+  build_file: '"@com_curoky_rules_cc//:third_party/openssl/openssl.BUILD"'
+versions:
+  'tags/OpenSSL_1_1_1g':

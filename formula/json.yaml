@@ -1,0 +1,7 @@
+url: nlohmann/json
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/nlohmann/**"])'
+  includes: '["include"]'
+versions:
+  'heads/master':

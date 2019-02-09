@@ -1,0 +1,9 @@
+url: ryanhaining/cppitertools
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.hpp"])'
+  srcs: 'glob(["internal/*.hpp"])'
+  includes: '["."]'
+  include_prefix: '"cppitertools"'
+versions:
+  'heads/master':

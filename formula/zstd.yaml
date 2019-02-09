@@ -1,0 +1,18 @@
+# Ref:
+#  - https://github.com/nelhage/rules_boost/blob/master/BUILD.zstd
+url: facebook/zstd
+repo_type: new_github
+build_args:
+  srcs: |
+    glob(
+      ["lib/**/*.c"],
+      exclude = ["lib/legacy/**"],
+    )
+  hdrs: glob(["lib/**/*.h"])
+  includes: |
+    [
+      "lib",
+      "lib/dictBuilder",
+    ]
+versions:
+  'heads/master':

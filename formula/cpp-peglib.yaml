@@ -1,0 +1,7 @@
+url: yhirose/cpp-peglib
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.h"])'
+  includes: '["."]'
+versions:
+  'heads/master':

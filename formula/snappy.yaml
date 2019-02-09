@@ -1,0 +1,6 @@
+url: google/snappy
+repo_type: new_github
+repo_args:
+  build_file: '"@com_curoky_rules_cc//:third_party/snappy/snappy.BUILD"'
+versions:
+  'heads/master':

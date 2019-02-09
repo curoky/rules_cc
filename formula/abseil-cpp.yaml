@@ -1,0 +1,4 @@
+url: abseil/abseil-cpp
+repo_type: origin_github
+versions:
+  'heads/master':

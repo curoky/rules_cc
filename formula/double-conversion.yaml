@@ -1,0 +1,8 @@
+url: google/double-conversion
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["double-conversion/*.h"])'
+  srcs: 'glob(["double-conversion/*.cc"])'
+  includes: '["."]'
+versions:
+  'heads/master':

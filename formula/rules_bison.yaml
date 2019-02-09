@@ -1,0 +1,8 @@
+url: jmillikin/rules_bison
+namespace: rules_bison
+repo_type: origin_github
+repo_args:
+  patch_cmds: |
+    ["sed -i '83d' bison/bison.bzl"]
+versions:
+  'tags/v0.2':

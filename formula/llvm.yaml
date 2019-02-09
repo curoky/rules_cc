@@ -1,0 +1,8 @@
+url: llvm/llvm
+namespace: llvm
+repo_type: local
+repo_args:
+  path: '"/home/linuxbrew/.linuxbrew/opt/llvm"'
+  build_file: '"@com_curoky_rules_cc//:third_party/llvm/llvm.BUILD"'
+versions:
+  'heads/master':

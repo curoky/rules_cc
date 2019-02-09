@@ -1,0 +1,9 @@
+url: DaveGamble/cJSON
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["*.h"])'
+  srcs: 'glob(["*.h", "*.c"])'
+  includes: '["."]'
+  include_prefix: '"cjson"'
+versions:
+  'heads/master':

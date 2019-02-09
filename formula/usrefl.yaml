@@ -1,0 +1,8 @@
+url: ubpa/usrefl
+repo_type: new_github
+build_args:
+  hdrs: '["include/USRefl_99.h"]'
+  copts: '["-std=c++17"]'
+  includes: '["include"]'
+versions:
+  'heads/master':

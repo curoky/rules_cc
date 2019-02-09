@@ -1,0 +1,7 @@
+url: facebook/fatal
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["fatal/**"])'
+  includes: '["."]'
+versions:
+  'heads/master':

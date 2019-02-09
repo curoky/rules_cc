@@ -1,0 +1,21 @@
+url: facebook/wangle
+repo_type: new_github
+build_args:
+  srcs: |
+    glob(
+      ["wangle/**/*.cpp"],
+      exclude = [
+          "wangle/**/test/**/*.cpp",
+          "wangle/**/example/**/*.cpp",
+      ],
+    )
+  hdrs: 'glob(["wangle/**/*.h"])'
+  copts: '["-std=c++17"]'
+  includes: '["."]'
+  deps: |
+    [
+      "@com_github_facebook_folly//:folly",
+      "@com_github_facebookincubator_fizz//:fizz",
+    ]
+versions:
+  'heads/master':

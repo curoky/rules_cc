@@ -1,0 +1,15 @@
+url: google/diff-match-patch
+repo_type: new_github
+build_args:
+  srcs: '["cpp/diff_match_patch.cpp"]'
+  hdrs: '["cpp/diff_match_patch.h"]'
+  includes: '["cpp"]'
+  deps: '["@qt//:qt_core"]'
+repo_args:
+  patch_cmds: |
+    [
+              "sed -i -e \"s/<QtCore>/<QtCore\\/QtCore>/g\" cpp/diff_match_patch.cpp",
+              'sed -i -e "s/toAscii()/toLatin1()/g" cpp/diff_match_patch.cpp',
+          ]
+versions:
+  'heads/master':

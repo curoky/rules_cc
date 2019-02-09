@@ -1,0 +1,12 @@
+url: nelhage/rules_boost
+repo_type: origin_github
+repo_args:
+  patch_cmds: |
+    [
+              'sed -i -e "s/openssl/org_openssl/g" boost/boost.bzl',
+              'sed -i -e "s/org_lzma_lzma/org_xz_xz/g" boost/boost.bzl',
+              'sed -i -e "s?org_lzma_lzma//:lzma?org_xz_xz//:xz?g" BUILD.boost',
+              'sed -i -e "s/org_lzma_lzma/org_xz_xz/g" BUILD.lzma',
+          ]
+versions:
+  'heads/master':

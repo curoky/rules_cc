@@ -1,0 +1,21 @@
+url: google/crc32c
+repo_type: new_github
+build_args:
+  srcs: |
+    glob(
+      [
+          "src/*.cc",
+          "src/*.h",
+      ],
+      exclude = [
+          "src/*test.cc",
+          "src/*benchmark.cc",
+          "src/*test_main.cc",
+      ],
+    )
+  hdrs: 'glob(["include/crc32c/*.h"])'
+  copts: '["-Isrc"]'
+  includes: '["include"]'
+  deps: '["@com_curoky_rules_cc//third_party/crc32c/extra:config"]'
+versions:
+  'heads/master':

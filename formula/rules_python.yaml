@@ -1,0 +1,5 @@
+url: bazelbuild/rules_python
+namespace: rules_python
+repo_type: origin_github
+versions:
+  'heads/master':

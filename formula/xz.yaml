@@ -1,0 +1,7 @@
+url: xz-mirror/xz
+namespace: org_xz_xz
+repo_type: new_github
+repo_args:
+  build_file: '"@com_curoky_rules_cc//:third_party/xz/xz.BUILD"'
+versions:
+  'tags/v5.2.5':

@@ -1,0 +1,7 @@
+url: taskflow/taskflow
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["taskflow/**/*.hpp"])'
+  includes: '["."]'
+versions:
+  'heads/master':

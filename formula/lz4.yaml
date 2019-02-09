@@ -1,0 +1,8 @@
+url: lz4/lz4
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["lib/*.h"])'
+  srcs: 'glob(["lib/*.c"])'
+  includes: '["lib"]'
+versions:
+  'heads/dev':

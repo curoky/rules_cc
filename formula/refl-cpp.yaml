@@ -1,0 +1,7 @@
+url: veselink1/refl-cpp
+repo_type: new_github
+build_args:
+  hdrs: '["include/refl.hpp"]'
+  includes: '["include"]'
+versions:
+  'heads/master':

@@ -1,0 +1,9 @@
+url: whoshuu/cpr
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/cpr/*.h"])'
+  srcs: 'glob(["cpr/*.cpp"])'
+  includes: '["include"]'
+  deps: '["@com_github_curl_curl//:curl"]'
+versions:
+  'heads/master':

@@ -1,0 +1,8 @@
+url: libaio/libaio
+namespace: com_pagure_libaio
+repo_type: new_github
+git_url: https://pagure.io/libaio.git
+repo_args:
+  build_file: '"@com_curoky_rules_cc//:third_party/libaio/libaio.BUILD"'
+versions:
+  'heads/master':

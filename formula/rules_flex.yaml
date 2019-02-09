@@ -1,0 +1,8 @@
+url: jmillikin/rules_flex
+repo_type: origin_github
+namespace: rules_flex
+repo_args:
+  patch_cmds: |
+    ["sed -i '76d' flex/flex.bzl"]
+versions:
+  'tags/v0.2':

@@ -1,0 +1,8 @@
+url: fmtlib/fmt
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/fmt/*.h"])'
+  defines: '["FMT_HEADER_ONLY"]'
+  includes: '["include"]'
+versions:
+  'heads/master':

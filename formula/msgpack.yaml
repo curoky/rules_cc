@@ -1,0 +1,17 @@
+url: msgpack/msgpack-c
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["include/**/*.hpp"])'
+  includes: '["include"]'
+  deps: |
+    [
+          "@boost//:assert",
+          "@boost//:fusion",
+          "@boost//:numeric_conversion",
+          "@boost//:operators",
+          "@boost//:predef",
+          "@boost//:preprocessor",
+          "@boost//:variant",
+        ]
+versions:
+  'heads/cpp_master':

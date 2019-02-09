@@ -1,0 +1,11 @@
+url: gcc/libiberty
+namespace: libiberty
+repo_type: local
+build_args:
+  srcs: '["lib/libiberty.a"]'
+  hdrs: 'glob(["include/libiberty/*.h"])'
+  includes: '["include/libiberty"]'
+repo_args:
+  path: '"/home/linuxbrew/.linuxbrew/opt/libiberty"'
+versions:
+  'heads/master':

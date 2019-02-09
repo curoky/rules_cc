@@ -1,0 +1,18 @@
+url: aappleby/smhasher
+repo_type: new_github
+build_args:
+  hdrs: |
+    [
+          "src/MurmurHash1.h",
+          "src/MurmurHash2.h",
+          "src/MurmurHash3.h",
+      ]
+  srcs: |
+    [
+          "src/MurmurHash1.cpp",
+          "src/MurmurHash2.cpp",
+          "src/MurmurHash3.cpp",
+      ]
+  includes: '["src/"]'
+versions:
+  'heads/master':

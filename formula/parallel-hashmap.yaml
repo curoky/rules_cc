@@ -1,0 +1,7 @@
+url: greg7mdp/parallel-hashmap
+repo_type: new_github
+build_args:
+  hdrs: 'glob(["parallel_hashmap/**/*.h"])'
+  includes: '["."]'
+versions:
+  'heads/master':
