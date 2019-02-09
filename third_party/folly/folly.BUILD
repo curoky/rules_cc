@@ -35,6 +35,7 @@ cc_library(
     copts = [
         "-std=c++17",
         "-DFOLLY_SANITIZE_ADDRESS",
+        "-DFOLLY_USE_SYMBOLIZER",
     ],
     includes = ["."],
     linkopts = ["-ldl"],
