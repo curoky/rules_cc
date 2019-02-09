@@ -66,6 +66,7 @@ cc_library(
         "@com_github_libsodium//:sodium",
         "@com_pagure_libaio//:libaio",
         "@libiberty",
+        "@org_xz_xz//:xz",
         "@org_openssl//:crypto",
         "@org_openssl//:ssl",
         "@rules_3rd//third_party/folly/extra:config",
