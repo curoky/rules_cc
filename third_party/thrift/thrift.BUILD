@@ -59,7 +59,9 @@ cc_binary(
         ":copy_thrifty",
         ":compiler_version",
     ],
+    copts = ["-std=c++17"],
     includes = ["compiler/cpp/src"],
+    linkopts = ["-static"],
     visibility = ["//visibility:public"],
 )
 
@@ -76,6 +78,7 @@ cc_library(
         ],
     ),
     hdrs = glob(["lib/cpp/src/thrift/**/*.h"]),
+    copts = ["-std=c++17"],
     # copts = ["-Ilib/cpp/src/"],
     includes = ["lib/cpp/src"],
     visibility = ["//visibility:public"],

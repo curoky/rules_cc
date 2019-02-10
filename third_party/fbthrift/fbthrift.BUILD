@@ -78,6 +78,7 @@ cc_binary(
         "-DTHRIFT_HAVE_LIBSNAPPY=0",
     ],
     includes = ["."],
+    linkopts = ["-static"],
     visibility = ["//visibility:public"],
     deps = ["@com_github_facebook_folly//:folly"],
 )
