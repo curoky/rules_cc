@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 # Ref: https://github.com/tensorflow/tensorflow/blob/master/third_party/curl.BUILD
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
@@ -46,8 +44,8 @@ cc_library(
     linkopts = ["-lrt"],
     visibility = ["//visibility:public"],
     deps = [
+        "@net_zlib_zlib//:zlib",
         "@org_openssl//:ssl",
         "@rules_3rd//third_party/curl/extra:config",
-        "@net_zlib_zlib//:zlib",
     ],
 )

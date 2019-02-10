@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
@@ -64,9 +62,9 @@ cc_library(
         "@com_pagure_libaio//:libaio",
         "@libiberty",
         "@net_zlib_zlib//:zlib",
-        "@org_xz_xz//:xz",
         "@org_openssl//:crypto",
         "@org_openssl//:ssl",
+        "@org_xz_xz//:xz",
         "@rules_3rd//third_party/folly/extra:config",
     ],
 )

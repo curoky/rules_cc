@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 # copy from https://github.com/tensorflow/tensorflow/blob/master/third_party/jsoncpp.BUILD
 load("@rules_cc//cc:defs.bzl", "cc_library")
 

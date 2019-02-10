@@ -12,11 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
+load("@rules_bison//bison:bison.bzl", "bison")
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("@rules_flex//flex:flex.bzl", "flex")
-load("@rules_bison//bison:bison.bzl", "bison")
 
 flex(
     name = "thriftl",
@@ -92,7 +90,7 @@ cc_library(
         "@boost//:smart_ptr",
         "@boost//:tokenizer",
         "@com_github_libevent_libevent//:libevent",
-        "@rules_3rd//third_party/thrift/extra:config",
         "@net_zlib_zlib//:zlib",
+        "@rules_3rd//third_party/thrift/extra:config",
     ],
 )

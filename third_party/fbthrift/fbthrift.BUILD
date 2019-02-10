@@ -12,12 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
+load("@rules_3rd//third_party/fbthrift:build_defs.bzl", "fbthrift_library")
+load("@rules_bison//bison:bison.bzl", "bison")
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("@rules_flex//flex:flex.bzl", "flex")
-load("@rules_bison//bison:bison.bzl", "bison")
-load("@rules_3rd//third_party/fbthrift:build_defs.bzl", "fbthrift_library")
 
 cc_binary(
     name = "compiler_generate_build_templates",

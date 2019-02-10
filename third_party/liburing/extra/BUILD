@@ -12,14 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "compat",
     hdrs = ["compat.h"],
-    include_prefix="liburing",
+    include_prefix = "liburing",
     includes = ["."],
     visibility = ["//visibility:public"],
 )
