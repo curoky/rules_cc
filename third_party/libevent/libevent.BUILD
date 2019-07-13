@@ -27,8 +27,8 @@ cc_library(
     includes = ["include"],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/libevent/extra:config",
-        "@//third_party/libevent/extra:config-private",
+        "@rules_3rd//third_party/libevent/extra:config",
+        "@rules_3rd//third_party/libevent/extra:config-private",
         "@org_openssl//:ssl",
     ],
 )

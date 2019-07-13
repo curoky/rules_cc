@@ -21,7 +21,7 @@ cc_library(
     includes = ["lib/cpp/src"],
     visibility = ["//visibility:public"],
     deps = [
-        "@//third_party/thrift/extra:config",
+        "@rules_3rd//third_party/thrift/extra:config",
         "@boost//:algorithm",
         "@boost//:locale",
         "@boost//:noncopyable",

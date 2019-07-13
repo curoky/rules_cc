@@ -105,7 +105,7 @@ cc_library(
     ],
     includes = ["."],
     deps = [
-        "@//third_party/fbthrift/extra:rpcmetadata",
+        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@com_github_facebook_folly//:folly",
         "@com_github_google_double_conversion//:double-conversion",
     ],
@@ -130,7 +130,7 @@ cc_library(
     ],
     includes = ["."],
     deps = [
-        "@//third_party/fbthrift/extra:rpcmetadata",
+        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@com_github_facebook_folly//:folly",
         "@com_github_google_double_conversion//:double-conversion",
     ],
@@ -190,8 +190,8 @@ cc_library(
     ],
     includes = ["."],
     deps = [
-        "@//third_party/fbthrift/extra:frozen",
-        "@//third_party/fbthrift/extra:reflection",
+        "@rules_3rd//third_party/fbthrift/extra:frozen",
+        "@rules_3rd//third_party/fbthrift/extra:reflection",
         "@com_github_facebook_folly//:folly",
         "@com_github_google_double_conversion//:double-conversion",
     ],
@@ -228,7 +228,7 @@ cc_library(
         ":concurrency",
         ":thrift",
         ":thriftprotocol",
-        "@//third_party/fbthrift/extra:rpcmetadata",
+        "@rules_3rd//third_party/fbthrift/extra:rpcmetadata",
         "@com_github_facebook_folly//:folly",
         "@com_github_facebook_proxygen//:proxygen",
         "@com_github_facebook_wangle//:wangle",

@@ -10,14 +10,14 @@ package(
 
 genrule(
     name = "snappy_stubs_public_h",
-    srcs = ["@//third_party/snappy/extra:snappy-stubs-public.h"],
+    srcs = ["@rules_3rd//third_party/snappy/extra:snappy-stubs-public.h"],
     outs = ["snappy-stubs-public.h"],
     cmd = "cp $< $@",
 )
 
 genrule(
     name = "config_h",
-    srcs = ["@//third_party/snappy/extra:config.h"],
+    srcs = ["@rules_3rd//third_party/snappy/extra:config.h"],
     outs = ["config.h"],
     cmd = "cp $< $@",
 )
