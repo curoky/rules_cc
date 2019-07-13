@@ -18,7 +18,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebook_folly//:folly",
-        "@com_github_facebook_zstd//:libzstd",
+        "@com_github_facebook_zstd//:zstd",
         "@com_github_google_brotli//:brotlidec",
         "@com_github_google_brotli//:brotlienc",
         "@com_github_google_double_conversion//:double-conversion",
