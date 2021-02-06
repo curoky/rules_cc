@@ -189,3 +189,33 @@ cc_library(
         """,
         path = "/home/linuxbrew/.linuxbrew/opt/tbb",
     )
+
+    native.new_local_repository(
+        name = "jemalloc",
+        build_file_content = """
+cc_library(
+    name = "jemalloc",
+    srcs = ["lib/libjemalloc.so","lib/libjemalloc.so.2"],
+    hdrs = glob(["include/**/*.h"]),
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+)
+        """,
+        path = "/home/linuxbrew/.linuxbrew/opt/jemalloc",
+    )
+
+    # /usr/lib/gcc/x86_64-linux-gnu/10/include/unwind.h
+    # /usr/lib/x86_64-linux-gnu/libunwind.so
+    native.new_local_repository(
+        name = "libunwind",
+        build_file_content = """
+cc_library(
+    name = "libunwind",
+    hdrs = ["gcc/x86_64-linux-gnu/10/include/unwind.h"],
+    srcs = ["x86_64-linux-gnu/libunwind.so"],
+    visibility = ["//visibility:public"],
+    includes = ["gcc/x86_64-linux-gnu/10/include"],
+)
+        """,
+        path = "/usr/lib/",
+    )
