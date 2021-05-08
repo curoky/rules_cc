@@ -11,7 +11,7 @@ class Formula:
     name: str
     url: str
     versions: Optional[List[Any]] = None  # Any is Formula
-
+    ver:Optional[str] = None
     git_url: Optional[str] = None
     namespace: Optional[str] = None
     build_path: Optional[str] = None
@@ -47,7 +47,7 @@ class Formula:
                         url,
                         git_url=git_url,
                         repo_args=ver_repo_args,
-                        namespace=ver_namespace)
+                        namespace=ver_namespace,ver=ver)
 
             if repo_type == 'new_github' or repo_type == 'local':
                 build_path = url.lower() + '/' + ref + '.BUILD'
@@ -106,12 +106,74 @@ class Generator(object):
 
         output.write_text(self.register_template.render(formulas=all_formulas))
 
+    def renderConfig(self):
+        self.output_prefix = Path.home() / 'repos/tools/rules_pkg/recipes'
+        shutil.rmtree(self.output_prefix, ignore_errors=True)
+        for formula in self.formulas:
+            if len(formula.versions) != 1:
+                print(f"formula.versions != 1, {formula.name}")
+            for vf in formula.versions:
+                local_root = Path(vf.url.lower())
+                config_output = self.output_prefix / local_root / 'config.bzl'
+                os.makedirs(config_output.parent, exist_ok=True)
+                (self.output_prefix / local_root / 'BUILD').write_text('')
+                if vf.build_path:
+                    vf.build_path = rreplace(vf.build_path, '.', '/', 1)
+                    vf.build_path = local_root / 'default' / Path(vf.build_path).name
+                    output: Path = self.output_prefix / vf.build_path
+                    os.makedirs(output.parent, exist_ok=True)
+                    output.write_text(self.formula_template.render(formula=vf))
+
+                    config_output.write_text(f'''
+config = {{
+    "type": "new_git_repository",
+    "build_file": "default:BUILD",
+    "remote": "{vf.git_url}",
+    "used_version": "{vf.ver}",
+    "versions": {{
+        "{vf.ver}": {{}}
+    }}
+}}
+''')
+                else:
+                    config_output.write_text(f'''
+config = {{
+    "type": "git_repository",
+    "remote": "{vf.git_url}",
+    "used_version": "{vf.ver}",
+    "versions": {{
+        "{vf.ver}": {{}}
+    }}
+}}
+''')
+        (self.output_prefix / 'BUILD').write_text('')
+        output = self.output_prefix / 'configs.bzl'
+        lines = []
+        lines2 = []
+        lines3 = []
+        for formula in self.formulas:
+            for vf in formula.versions:
+                # name = vf.url.lower().replace('-', '_').replace('/','_')
+                lines.append(
+                    f'load("@com_curoky_rules_pkg//recipes/{vf.url.lower()}:config.bzl", {vf.namespace}_config="config")')
+                lines2.append(f'"{vf.namespace}": {vf.namespace}_config,')
+                lines3.append(f'"{vf.namespace}": "{vf.url.lower()}",')
+        lines.append('configs ={')
+        lines += lines2
+        lines.append('}')
+        lines.append('paths ={')
+        lines += lines3
+        lines.append('}')
+        output.write_text('\n'.join(lines))
+
+
 
 @app.command()
 def gen():
     g = Generator()
-    g.renderFormula()
-    g.renderRegister()
+    # g.renderFormula()
+    # g.renderRegister()
+    g.renderConfig()
 
 
 @app.command()
